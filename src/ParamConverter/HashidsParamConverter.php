@@ -25,11 +25,7 @@ class HashidsParamConverter implements ParamConverterInterface
 
     public function apply(Request $request, ParamConverter $configuration): bool
     {
-        $decodedSuccessfuly = $this->decodeHashidOnRoute($request);
-
-        if($decodedSuccessfuly === false) {
-            $this->decodeArgumentsController($request, $configuration);
-        }
+        $this->decodeHashidOnRoute($request);
 
         return $this->continueWithNextParamConverters();
     }
@@ -53,17 +49,6 @@ class HashidsParamConverter implements ParamConverterInterface
         }
 
         return false;
-    }
-
-    private function decodeArgumentsController(Request $request, ParamConverter $configuration): void
-    {
-        $name = $configuration->getName();
-
-        $hashids = $this->hashids->decode((string) $request->attributes->get($name));
-
-        if ($this->hasHashidDecoded($hashids)) {
-            $request->attributes->set($name, current($hashids));
-        }
     }
 
     private function hasHashidDecoded($hashids): bool

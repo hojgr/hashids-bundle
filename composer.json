@@ -25,7 +25,7 @@
     "hashids/hashids": "^4.1",
     "sensio/framework-extra-bundle": "^5.1 || ^6.0",
     "symfony/config": "^4.4 || ^5.0",
-    "symfony/dependency-injection": "^4.4 || ^5.0",
+    "symfony/dependency-injection": "^7.1.2",
     "symfony/http-foundation": "^4.4 || ^5.3"
   },
   "require-dev": {
